@@ -7,3 +7,21 @@ Create container and volume.
 Execute command on container
 
 *docker exec -it spoty_etl_pg psql -h localhost -U postgres -W spotipy*
+
+### Usage
+
+1- Create settings.ini file with the required information:
+
+[settings]
+
+CLIENT_ID=#yourClientId
+
+CLIENT_SECRET=#yourClientSecret
+
+SPOTIPY_REDIRECT_URI=#someURL
+
+DB_CONNSTR=#postgresql+psycopg2://yourUserDBName:yourUserDBPassword@yourDBDockerContainerName/yourDBName
+
+2- Execute
+
+python spoty_etl/base_etl.py
