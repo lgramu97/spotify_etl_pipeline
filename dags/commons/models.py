@@ -3,7 +3,7 @@ from sqlalchemy import TIMESTAMP, Column, String
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 
-from cfg import DB_CONNSTR
+from dags.commons.cfg import DB_CONNSTR
 
 engine = create_engine(DB_CONNSTR) if DB_CONNSTR else None
 meta = MetaData(engine)

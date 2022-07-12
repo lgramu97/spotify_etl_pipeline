@@ -1,4 +1,3 @@
-
 from argon2 import extract_parameters
 from cfg import CLIENT_ID, CLIENT_SECRET, SPOTIPY_REDIRECT_URI, DB_CONNSTR
 import spotipy
@@ -25,7 +24,7 @@ def extract(date: datetime, limit=50):
         limit (int, optional): Limit of element to query. Defaults to 50.
     """
     ds = int(date.timestamp()) * 1000 #UNIX FORMAT.
-    return sp.current_user_recently_played(limit=limit, after=ds)
+    return sp.current_user_recently_played(limit=limit, before=ds)
 
 
 def transform(raw_data, date):
@@ -55,6 +54,7 @@ def transform(raw_data, date):
     #r['track] = {album,artist,avaible_markets,.....}
     #Create dataframe pandas with dict.
     df = pd.DataFrame(data)
+    breakpoint()
     # Remove dates different from what we want
     clean_df = df[pd.to_datetime(df["played_at"]).dt.date == date.date()]
 
@@ -74,8 +74,8 @@ def load(df: pd.DataFrame):
     
     
 if __name__ == '__main__':
-    #datetime.today() 2022-07-06 12:37:00.796589 1 day
-    date = datetime.today() - timedelta(days=5)
+    #datetime.today() 2022-07-06 12:37:00.796589 1 day (we want the tracks played some date)
+    date = datetime.today() - timedelta(days=16)
     #date = 5 days ago. (Year-Month-Day Hour:Minutes:Sec.Mils)
 
     # Extract

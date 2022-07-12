@@ -1,3 +1,5 @@
+# ETL SPOTIFY (NO AIRFLOW)
+
 ## Run DOCKER postgres.
 
 Create container and volume.
@@ -25,3 +27,15 @@ DB_CONNSTR=#postgresql+psycopg2://yourUserDBName:yourUserDBPassword@yourDBDocker
 2- Execute
 
 python spoty_etl/base_etl.py
+
+
+# ETL SPOTIFY (AIRFLOW)
+
+## Usage etl_airflow
+
+1- clone repo.
+
+2- echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+
+3- docker-compose up -d
+

@@ -1,0 +1,3 @@
+spotify_etl_pipeline/spoty_etl/.*
+spotify_etl_pipeline/dags/commons/.*
+spotify_etl_pipeline/dags/spoty_etl_airflow/common_args\.py
